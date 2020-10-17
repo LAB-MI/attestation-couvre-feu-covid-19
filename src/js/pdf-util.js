@@ -64,28 +64,28 @@ export async function generatePdf (profile, reason, pdfBase) {
   drawText(`${zipcode} ${town}`, 133, 609)
 
   if (reason === 'travail') {
-    drawText('x', 73, 540, 18)
+    drawText('x', 73, 539, 18)
   }
   if (reason === 'sante') {
-    drawText('x', 73, 490, 18)
+    drawText('x', 73, 489, 18)
   }
   if (reason === 'famille') {
-    drawText('x', 73, 426, 18)
+    drawText('x', 73, 441, 18)
   }
   if (reason === 'handicap') {
-    drawText('x', 73, 375, 18)
+    drawText('x', 73, 384, 18)
   }
   if (reason === 'convocation') {
-    drawText('x', 73, 339, 18)
+    drawText('x', 73, 349, 18)
   }
   if (reason === 'missions') {
-    drawText('x', 73, 302, 18)
+    drawText('x', 73, 313, 18)
   }
   if (reason === 'transits') {
-    drawText('x', 73, 267, 18)
+    drawText('x', 73, 264, 18)
   }
   if (reason === 'animaux') {
-    drawText('x', 73, 231, 18)
+    drawText('x', 73, 229, 18)
   }
 
   let locationSize = getIdealFontSize(font, profile.town, 83, 7, 11)
@@ -98,9 +98,9 @@ export async function generatePdf (profile, reason, pdfBase) {
     locationSize = 7
   }
 
-  drawText(profile.town, 105, 176, locationSize)
-  drawText(`${profile.datesortie}`, 91, 153, 11)
-  drawText(`${profile.heuresortie}`, 312, 153, 11)
+  drawText(profile.town, 105, 168, locationSize)
+  drawText(`${profile.datesortie}`, 91, 146, 11)
+  drawText(`${profile.heuresortie}`, 312, 146, 11)
 
   // const shortCreationDate = `${creationDate.split('/')[0]}/${
   //   creationDate.split('/')[1]
