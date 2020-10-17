@@ -567,7 +567,7 @@ input:valid+span:after {
   }
 }
 
-#snackbar {
+#snackbar, #snackbar-cleardata {
   min-width: 250px;
   color: #fff;
   text-align: center;
@@ -584,7 +584,7 @@ input:valid+span:after {
   transition: all 0.5s ease-in-out;
 }
 
-#snackbar.show {
+#snackbar.show, #snackbar-cleardata {
   opacity: 1;
 }
 

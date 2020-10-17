@@ -8,6 +8,7 @@ const secureLS = new SecureLS({ encodingType: 'aes' })
 const formProfile = $('#form-profile')
 const formInputs = $$('#form-profile input')
 const snackbar = $('#snackbar')
+const clearDataSnackbar = $('#snackbar-cleardata')
 const reasonInputs = [...$$('input[name="field-reason"]')]
 const reasonFieldset = $('#reason-fieldset')
 const reasonAlert = reasonFieldset.querySelector('.msg-alert')
@@ -87,6 +88,16 @@ function setCurrentDate () {
 
   releaseDateInput.value = getFormattedDate(currentDate)
   releaseTimeInput.value = currentDate.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
+}
+
+function showSnackbar (snackbarToShow, showDuration = 6000) {
+  snackbarToShow.classList.remove('d-none')
+  setTimeout(() => snackbarToShow.classList.add('show'), 100)
+
+  setTimeout(function () {
+    snackbarToShow.classList.remove('show')
+    setTimeout(() => snackbarToShow.classList.add('d-none'), 500)
+  }, showDuration)
 }
 
 export function setReleaseDateTime () {
@@ -181,6 +192,7 @@ export function prepareInputs () {
     clearSecureLS()
     clearForm()
     setCurrentDate()
+    showSnackbar(clearDataSnackbar, 1200)
   })
 
   $('#generate-btn').addEventListener('click', async (event) => {
@@ -211,12 +223,6 @@ export function prepareInputs () {
 
     downloadBlob(pdfBlob, `attestation-${creationDate}_${creationHour}.pdf`)
 
-    snackbar.classList.remove('d-none')
-    setTimeout(() => snackbar.classList.add('show'), 100)
-
-    setTimeout(function () {
-      snackbar.classList.remove('show')
-      setTimeout(() => snackbar.classList.add('d-none'), 500)
-    }, 6000)
+    showSnackbar(snackbar)
   })
 }
