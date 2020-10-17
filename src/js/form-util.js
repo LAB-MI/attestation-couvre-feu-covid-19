@@ -2,7 +2,9 @@ import { $, $$, downloadBlob } from './dom-utils'
 import { addSlash, getFormattedDate } from './util'
 import pdfBase from '../certificate.pdf'
 import { generatePdf } from './pdf-util'
+import SecureLS from 'secure-ls'
 
+const secureLS = new SecureLS({ encodingType: 'aes' })
 const formInputs = $$('#form-profile input')
 const snackbar = $('#snackbar')
 const reasonInputs = [...$$('input[name="field-reason"]')]
@@ -60,6 +62,11 @@ function validateAriaFields () {
     .includes(true)
 }
 
+function updateSecureLS () {
+  secureLS.set('profile', getProfile())
+  secureLS.set('reason', getReason())
+}
+
 export function setReleaseDateTime () {
   const loadedDate = new Date()
   releaseDateInput.value = getFormattedDate(loadedDate)
@@ -87,7 +94,26 @@ export function getReason () {
 }
 
 export function prepareInputs () {
+  const lsProfile = secureLS.get('profile')
+  const lsReason = secureLS.get('reason')
+  const currentDate = new Date()
+  const formattedDate = getFormattedDate(currentDate)
+  const formattedTime = currentDate.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
+
   formInputs.forEach((input) => {
+    switch (input.name) {
+      case 'datesortie' :
+        input.value = formattedDate
+        break
+      case 'heuresortie' :
+        input.value = formattedTime
+        break
+      case 'field-reason' :
+        if (input.value === lsReason) input.checked = true
+        break
+      default :
+        input.value = lsProfile[input.name]
+    }
     const exempleElt = input.parentNode.parentNode.querySelector('.exemple')
     const validitySpan = input.parentNode.parentNode.querySelector('.validity')
     if (input.placeholder && exempleElt) {
@@ -134,6 +160,8 @@ export function prepareInputs () {
     if (invalid) {
       return
     }
+
+    updateSecureLS()
 
     const pdfBlob = await generatePdf(getProfile(), reason, pdfBase)
 
