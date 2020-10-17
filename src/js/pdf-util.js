@@ -63,30 +63,43 @@ export async function generatePdf (profile, reason, pdfBase) {
   drawText(address, 133, 622)
   drawText(`${zipcode} ${town}`, 133, 609)
 
-  if (reason === 'travail') {
-    drawText('x', 73, 539, 18)
+  let y
+
+  switch (reason) {
+    case 'travail':
+      y = 539
+      break
+
+    case 'sante':
+      y = 489
+      break
+
+    case 'famille':
+      y = 441
+      break
+
+    case 'handicap':
+      y = 384
+      break
+
+    case 'convocation':
+      y = 349
+      break
+
+    case 'missions':
+      y = 313
+      break
+
+    case 'transits':
+      y = 264
+      break
+
+    case 'animaux':
+      y = 229
+      break
   }
-  if (reason === 'sante') {
-    drawText('x', 73, 489, 18)
-  }
-  if (reason === 'famille') {
-    drawText('x', 73, 441, 18)
-  }
-  if (reason === 'handicap') {
-    drawText('x', 73, 384, 18)
-  }
-  if (reason === 'convocation') {
-    drawText('x', 73, 349, 18)
-  }
-  if (reason === 'missions') {
-    drawText('x', 73, 313, 18)
-  }
-  if (reason === 'transits') {
-    drawText('x', 73, 264, 18)
-  }
-  if (reason === 'animaux') {
-    drawText('x', 73, 229, 18)
-  }
+
+  drawText('x', 73, y, 18)
 
   let locationSize = getIdealFontSize(font, profile.town, 83, 7, 11)
 
