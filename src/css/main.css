@@ -154,6 +154,10 @@ p {
   transform: translateY(-2px);
 }
 
+#form-profile #formgroup-storedata {
+  user-select: none;
+}
+
 @media (prefers-color-scheme: dark) {
   #form-profile .form-radio-label .form-check-label {
     color: #ddd;

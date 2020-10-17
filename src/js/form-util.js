@@ -5,12 +5,15 @@ import { generatePdf } from './pdf-util'
 import SecureLS from 'secure-ls'
 
 const secureLS = new SecureLS({ encodingType: 'aes' })
+const formProfile = $('#form-profile')
 const formInputs = $$('#form-profile input')
 const snackbar = $('#snackbar')
 const reasonInputs = [...$$('input[name="field-reason"]')]
 const reasonFieldset = $('#reason-fieldset')
 const reasonAlert = reasonFieldset.querySelector('.msg-alert')
 const releaseDateInput = $('#field-datesortie')
+const releaseTimeInput = $('#field-heuresortie')
+const storeDataInput = $('#field-storedata')
 
 const conditions = {
   '#field-firstname': {
@@ -63,8 +66,27 @@ function validateAriaFields () {
 }
 
 function updateSecureLS () {
-  secureLS.set('profile', getProfile())
-  secureLS.set('reason', getReason())
+  if (wantDataToBeStored() === true) {
+    secureLS.set('profile', getProfile())
+    secureLS.set('reason', getReason())
+  } else {
+    clearSecureLS()
+  }
+}
+
+function clearSecureLS () {
+  secureLS.clear()
+}
+
+function clearForm () {
+  formProfile.reset()
+}
+
+function setCurrentDate () {
+  const currentDate = new Date()
+
+  releaseDateInput.value = getFormattedDate(currentDate)
+  releaseTimeInput.value = currentDate.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
 }
 
 export function setReleaseDateTime () {
@@ -89,8 +111,11 @@ export function getProfile () {
 
 export function getReason () {
   const checkedReasonInput = reasonInputs.find(input => input.checked)
-  const val = checkedReasonInput?.value
-  return val
+  return checkedReasonInput?.value
+}
+
+export function wantDataToBeStored () {
+  return storeDataInput.checked
 }
 
 export function prepareInputs () {
@@ -110,6 +135,9 @@ export function prepareInputs () {
         break
       case 'field-reason' :
         if (lsReason && input.value === lsReason) input.checked = true
+        break
+      case 'storedata' :
+        if (lsReason || lsProfile) input.checked = true
         break
       default :
         if (lsProfile) input.value = lsProfile[input.name]
@@ -143,6 +171,16 @@ export function prepareInputs () {
       reasonFieldset.classList.toggle('fieldset-error', isInError)
       reasonAlert.classList.toggle('hidden', !isInError)
     })
+  })
+
+  $('#formgroup-storedata').addEventListener('click', (event) => {
+    (storeDataInput.checked) ? storeDataInput.checked = false : storeDataInput.checked = true
+  })
+
+  $('#cleardata').addEventListener('click', (event) => {
+    clearSecureLS()
+    clearForm()
+    setCurrentDate()
   })
 
   $('#generate-btn').addEventListener('click', async (event) => {
