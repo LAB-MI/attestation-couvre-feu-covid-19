@@ -14,8 +14,6 @@
     "build:simple": "cross-env-shell parcel build --public-url $PUBLIC_URL ./src/index.html ./src/robots.txt ./src/sitemap.xml",
     "build": "npm run build:dev",
     "postbuild": "cross-env-shell react-snap",
-    "build:prod": "cross-env PUBLIC_URL='/attestation-couvre-feu-covid-19' npm run build:simple",
-    "build:test": "cross-env PUBLIC_URL='/euqiremun' npm run build:simple",
     "build:dev": "cross-env PUBLIC_URL='/' npm run build:simple",
     "preserve": "npm run build",
     "serve": "serve dist",
