@@ -109,10 +109,10 @@ export function prepareInputs () {
         input.value = formattedTime
         break
       case 'field-reason' :
-        if (input.value === lsReason) input.checked = true
+        if (lsReason && input.value === lsReason) input.checked = true
         break
       default :
-        input.value = lsProfile[input.name]
+        if (lsProfile) input.value = lsProfile[input.name]
     }
     const exempleElt = input.parentNode.parentNode.querySelector('.exemple')
     const validitySpan = input.parentNode.parentNode.querySelector('.validity')
