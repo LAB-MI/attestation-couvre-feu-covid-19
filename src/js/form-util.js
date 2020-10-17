@@ -5,12 +5,16 @@ import { generatePdf } from './pdf-util'
 import SecureLS from 'secure-ls'
 
 const secureLS = new SecureLS({ encodingType: 'aes' })
+const formProfile = $('#form-profile')
 const formInputs = $$('#form-profile input')
 const snackbar = $('#snackbar')
+const clearDataSnackbar = $('#snackbar-cleardata')
 const reasonInputs = [...$$('input[name="field-reason"]')]
 const reasonFieldset = $('#reason-fieldset')
 const reasonAlert = reasonFieldset.querySelector('.msg-alert')
 const releaseDateInput = $('#field-datesortie')
+const releaseTimeInput = $('#field-heuresortie')
+const storeDataInput = $('#field-storedata')
 
 const conditions = {
   '#field-firstname': {
@@ -63,8 +67,37 @@ function validateAriaFields () {
 }
 
 function updateSecureLS () {
-  secureLS.set('profile', getProfile())
-  secureLS.set('reason', getReason())
+  if (wantDataToBeStored() === true) {
+    secureLS.set('profile', getProfile())
+    secureLS.set('reason', getReason())
+  } else {
+    clearSecureLS()
+  }
+}
+
+function clearSecureLS () {
+  secureLS.clear()
+}
+
+function clearForm () {
+  formProfile.reset()
+}
+
+function setCurrentDate () {
+  const currentDate = new Date()
+
+  releaseDateInput.value = getFormattedDate(currentDate)
+  releaseTimeInput.value = currentDate.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
+}
+
+function showSnackbar (snackbarToShow, showDuration = 6000) {
+  snackbarToShow.classList.remove('d-none')
+  setTimeout(() => snackbarToShow.classList.add('show'), 100)
+
+  setTimeout(function () {
+    snackbarToShow.classList.remove('show')
+    setTimeout(() => snackbarToShow.classList.add('d-none'), 500)
+  }, showDuration)
 }
 
 export function setReleaseDateTime () {
@@ -89,8 +122,11 @@ export function getProfile () {
 
 export function getReason () {
   const checkedReasonInput = reasonInputs.find(input => input.checked)
-  const val = checkedReasonInput?.value
-  return val
+  return checkedReasonInput?.value
+}
+
+export function wantDataToBeStored () {
+  return storeDataInput.checked
 }
 
 export function prepareInputs () {
@@ -109,10 +145,13 @@ export function prepareInputs () {
         input.value = formattedTime
         break
       case 'field-reason' :
-        if (input.value === lsReason) input.checked = true
+        if (lsReason && input.value === lsReason) input.checked = true
+        break
+      case 'storedata' :
+        if (lsReason || lsProfile) input.checked = true
         break
       default :
-        input.value = lsProfile[input.name]
+        if (lsProfile) input.value = lsProfile[input.name]
     }
     const exempleElt = input.parentNode.parentNode.querySelector('.exemple')
     const validitySpan = input.parentNode.parentNode.querySelector('.validity')
@@ -145,6 +184,17 @@ export function prepareInputs () {
     })
   })
 
+  $('#formgroup-storedata').addEventListener('click', (event) => {
+    (storeDataInput.checked) ? storeDataInput.checked = false : storeDataInput.checked = true
+  })
+
+  $('#cleardata').addEventListener('click', (event) => {
+    clearSecureLS()
+    clearForm()
+    setCurrentDate()
+    showSnackbar(clearDataSnackbar, 1200)
+  })
+
   $('#generate-btn').addEventListener('click', async (event) => {
     event.preventDefault()
 
@@ -173,12 +223,6 @@ export function prepareInputs () {
 
     downloadBlob(pdfBlob, `attestation-${creationDate}_${creationHour}.pdf`)
 
-    snackbar.classList.remove('d-none')
-    setTimeout(() => snackbar.classList.add('show'), 100)
-
-    setTimeout(function () {
-      snackbar.classList.remove('show')
-      setTimeout(() => snackbar.classList.add('d-none'), 500)
-    }, 6000)
+    showSnackbar(snackbar)
   })
 }

@@ -154,6 +154,10 @@ p {
   transform: translateY(-2px);
 }
 
+#form-profile #formgroup-storedata {
+  user-select: none;
+}
+
 @media (prefers-color-scheme: dark) {
   #form-profile .form-radio-label .form-check-label {
     color: #ddd;
@@ -563,7 +567,7 @@ input:valid+span:after {
   }
 }
 
-#snackbar {
+#snackbar, #snackbar-cleardata {
   min-width: 250px;
   color: #fff;
   text-align: center;
@@ -580,7 +584,7 @@ input:valid+span:after {
   transition: all 0.5s ease-in-out;
 }
 
-#snackbar.show {
+#snackbar.show, #snackbar-cleardata {
   opacity: 1;
 }
 
