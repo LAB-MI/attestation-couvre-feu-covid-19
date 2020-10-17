@@ -48,7 +48,7 @@ export async function generatePdf (profile, reason, pdfBase) {
   ])
   pdfDoc.setProducer('DNUM/SDIT')
   pdfDoc.setCreator('')
-  pdfDoc.setAuthor("Ministère d l'intérieur")
+  pdfDoc.setAuthor("Ministère de l'intérieur")
 
   const page1 = pdfDoc.getPages()[0]
 
