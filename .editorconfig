@@ -8,7 +8,7 @@ end_of_line = lf
 
 [*.html]
 indent_style = space
-indent_size = 2
+indent_size = 4
 
 [*.{js,json,yml}]
 indent_style = space
