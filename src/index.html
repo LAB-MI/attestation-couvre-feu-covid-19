@@ -42,11 +42,12 @@
                     COVID-19
                 </span>
                 <span class="covid-subtitle">
-                  Attestation de déplacement dérogatoire
+                  Attestation de déplacement dérogatoire<br/>
+                  ENTRE 20 HEURES et 6 HEURES
                 </span>
             </h1>
             <p class="text-desc">
-                En application de l'article 51 du décret n° 2020-1262 du 16 octobre 2020 prescrivant les mesures générales nécessaires pour faire face à l'épidémie de covid-19 dans le cadre de l'état d'urgence sanitaire
+                En application de l’article 4 du décret n°2020-1310 du 29 octobre 2020 prescrivant les mesures générales nécessaires pour faire face à l'épidémie de covid-19 dans le cadre de l'état d'urgence sanitaire
             </p>
 
         </div>
@@ -59,296 +60,45 @@
     ></p>
 
     <div class="wrapper">
-        <form id="form-profile" accept-charset="UTF-8">
-            <h2 class="titre-2">Remplissez en ligne votre déclaration numérique: </h2>
-            <p class="msg-info">Tous les champs sont obligatoires.</p>
+        <form id="form-profile" accept-charset="UTF-8"></form>
+        <div id="formgroup-storedata"
+            class="form-check text-center mt-4">
+            <input class="form-check-input"
+                    type="checkbox"
+                    name="storedata"
+                    id="field-storedata"
+                    value="storedata">
+            <label class="form-check-label"
+                    for="field-storedata">
+                    Mon téléphone se souvient de moi
+            </label>
+        </div>
+        <p class="text-center mt-5">
+            <button type="button" id="generate-btn" class="btn btn-primary btn-attestation">
+              <span>
+                <i class="fa fa-file-pdf inline-block mr-1"></i>
+                Générer mon attestation
+              </span>
+            </button>
+        </p>
 
-            <div class="form-group">
-                <label for="field-firstname" id="field-firstname-label">Prénom</label>
-                <div class="input-group  align-items-center">
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="field-firstname"
-                        name="firstname"
-                        autocomplete="given-name"
-                        placeholder="Jean"
-                        required
-                        autofocus
-                        aria-invalid="false"
-                    >
-                    <span class="validity" aria-hidden="true" hidden=""></span>
-                </div>
-                <p class="exemple"></p>
-            </div>
+        <div class="bg-primary  d-none" id="snackbar">
+            L'attestation est téléchargée sur votre appareil.
+        </div>
 
-            <div class="form-group">
-                <label for="field-lastname" id="field-lastname-label">Nom</label>
-                <div class="input-group  align-items-center">
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="field-lastname"
-                        name="lastname"
-                        autocomplete="family-name"
-                        placeholder="Dupont"
-                        aria-invalid="false"
-                        required
-                        autofocus
-                    >
-                    <span class="validity" aria-hidden="true" hidden=""></span>
-                </div>
-                <p class="exemple"></p>
-            </div>
-
-            <div class="form-group">
-                <label for="field-birthday" id="field-birthday-label">Date de naissance (au format jj/mm/aaaa)</label>
-                <div class="input-group  align-items-center">
-                    <input
-                        type="text"
-                        pattern="^([0][1-9]|[1-2][0-9]|30|31)\/([0][1-9]|10|11|12)\/(19[0-9][0-9]|20[0-1][0-9]|2020)"
-                        inputmode="numeric"
-                        class="form-control"
-                        id="field-birthday"
-                        name="birthday"
-                        aria-invalid="false"
-                        autocomplete="bday"
-                        placeholder="01/01/1970"
-                        maxlength="10"
-                        required
-                    >
-                    <span class="validity" aria-hidden="true" hidden=""></span>
-                </div>
-                <p class="exemple"></p>
-            </div>
-
-            <div class="form-group">
-                <label for="field-lieunaissance"  id="field-lieunaissance-label">Lieu de naissance</label>
-                <div class="input-group  align-items-center">
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="field-lieunaissance"
-                        name="lieunaissance"
-                        aria-invalid="false"
-                        autocomplete="off"
-                        placeholder="Lyon"
-                        required
-                    >
-                    <span class="validity" aria-hidden="true" hidden=""></span>
-                </div>
-                <p class="exemple"></p>
-            </div>
-
-            <div class="form-group">
-                <label for="field-address" id="field-address-label">Adresse</label>
-                <div class="input-group  align-items-center">
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="field-address"
-                        name="address"
-                        aria-invalid="false"
-                        autocomplete="address-line1"
-                        placeholder="999 avenue de france"
-                        required
-                    >
-                    <span class="validity" aria-hidden="true" hidden=""></span>
-                </div>
-                <p class="exemple"></p>
-            </div>
-
-            <div class="form-group">
-                <label for="field-town" id="field-town-label">Ville</label>
-                <div class="input-group  align-items-center">
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="field-town"
-                        name="town"
-                        autocomplete="address-level2"
-                        aria-invalid="false"
-                        placeholder="Paris"
-                        required
-                    >
-                    <span class="validity" aria-hidden="true" hidden=""></span>
-                </div>
-                <p class="exemple"></p>
-            </div>
-
-            <div class="form-group">
-                <label for="field-zipcode" id="field-zipcode-label" >Code Postal</label>
-                <div class="input-group  align-items-center">
-                    <input
-                        type="text"
-                        inputmode="numeric"
-                        pattern="[0-9]{5}"
-                        min="00000"
-                        max="99999"
-                        class="form-control"
-                        id="field-zipcode"
-                        name="zipcode"
-                        aria-invalid="false"
-                        autocomplete="postal-code"
-                        minlength="4"
-                        maxlength="5"
-                        placeholder="75001"
-                        required
-                    >
-                    <span class="validity" aria-hidden="true" hidden=""></span>
-                </div>
-                <p class="exemple"></p>
-            </div>
-
-            <div class="form-group">
-                <label for="field-datesortie" id="field-datesortie-label">Date de sortie</label>
-                <div class="input-group  align-items-center">
-                    <input
-                        type="date"
-                        class="form-control"
-                        id="field-datesortie"
-                        name="datesortie"
-                        aria-invalid="false"
-                        required
-                    >
-                    <span class="validity" aria-hidden="true" hidden=""></span>
-                </div>
-                <p class="exemple"></p>
-            </div>
-
-            <div class="form-group">
-                <label for="field-heuresortie" id="field-heuresortie-label">Heure de sortie</label>
-                <div class="input-group  align-items-center">
-                    <input
-                        type="time"
-                        class="form-control"
-                        id="field-heuresortie"
-                        name="heuresortie"
-                        aria-invalid="false"
-                        required
-                    >
-                    <span class="validity" aria-hidden="true" hidden=""></span>
-                </div>
-                <p class="exemple"></p>
-            </div>
-
-            <fieldset id="reason-fieldset" class="fieldset">
-                <legend class="legend  titre-3">Choisissez un motif de déplacement</legend>
-                <p class="msg-alert hidden">
-                  Veuillez choisir un motif
-                </p>
-                <p>
-                    Je certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé en application des mesures générales nécessaires pour faire face à l'épidémie de Covid19 dans le cadre de l'état d'urgence sanitaire
-                  <a class="footnote" id="footnote1" href="#footnote1">[1]</a>&nbsp;:
-                </p>
-                <div class="form-radio align-items-center">
-                    <input
-                        class="form-check-input"
-                        type="radio"
-                        name="field-reason"
-                        id="radio-travail"
-                        value="travail"
-                    >
-                    <label class="form-radio-label" for="radio-travail">
-                        Déplacements entre le domicile et le lieu d'exercice de l'activité professionnelle ou le lieu d'enseignement et de formation&nbsp;;
-                    </label>
-                </div>
-
-                <div class="form-radio align-items-center">
-                    <input
-                        class="form-check-input"
-                        type="radio"
-                        name="field-reason"
-                        id="radio-sante"
-                        value="sante"
-                    >
-                    <label class="form-radio-label" for="radio-sante">
-                        Déplacements pour des consultations et soins ne pouvant être assurés à distance et ne pouvant être différés ou pour l'achat de produits de santé&nbsp;;
-                    </label>
-                </div>
-
-                <div class="form-radio align-items-center">
-                    <input
-                        class="form-check-input"
-                        type="radio"
-                        name="field-reason"
-                        id="radio-famille"
-                        value="famille"
-                    >
-                    <label class="form-radio-label" for="radio-famille">
-                        Déplacements pour motif familial impérieux, pour l'assistance aux personnes vulnérables ou précaires ou pour la garde d'enfants&nbsp;;
-                    </label>
-                </div>
-                <div class="form-radio align-items-center">
-                    <input
-                        class="form-check-input"
-                        type="radio"
-                        name="field-reason"
-                        id="radio-handicap"
-                        value="handicap"
-                    >
-                    <label class="form-radio-label" for="radio-handicap">
-                        Déplacements des personnes en situation de handicap et de leur accompagnant&nbsp;;
-                    </label>
-                </div>
-                <div class="form-radio align-items-center">
-                    <input
-                        class="form-check-input"
-                        type="radio"
-                        name="field-reason"
-                        id="radio-convocation"
-                        value="convocation"
-                    >
-                    <label class="form-radio-label" for="radio-convocation">
-                        Déplacements pour répondre à une convocation judiciaire ou administrative&nbsp;;
-                    </label>
-                </div>
-                <div class="form-radio align-items-center">
-                    <input
-                        class="form-check-input"
-                        type="radio"
-                        name="field-reason"
-                        id="radio-missions"
-                        value="missions"
-                    >
-                    <label class="form-radio-label" for="radio-missions">
-                        Déplacements pour participer à des missions d'intérêt général sur demande de l'autorité administrative&nbsp;;
-                    </label>
-                </div>
-                <div class="form-radio align-items-center">
-                    <input
-                        class="form-check-input"
-                        type="radio"
-                        name="field-reason"
-                        id="radio-transits"
-                        value="transits"
-                    >
-                    <label class="form-radio-label" for="radio-transits">
-                        Déplacements liés à des transits pour des déplacements de longues distances&nbsp;;
-                    </label>
-                </div>
-                <div class="form-radio align-items-center">
-                    <input
-                        class="form-check-input"
-                        type="radio"
-                        name="field-reason"
-                        id="radio-animaux"
-                        value="animaux"
-                    >
-                    <label class="form-radio-label" for="radio-animaux">
-                        Déplacements brefs, dans un rayon maximal d'un kilomètre autour du domicile pour les besoins des animaux de compagnie.
-                    </label>
-                </div>
-            </fieldset>
-
-            <p class="text-center mt-5">
-                <button type="button" id="generate-btn" class="btn btn-primary btn-attestation"><span ><i class="fa fa-file-pdf inline-block mr-1"></i>  Générer mon attestation</span></button>
-            </p>
-
-            <div class="bg-primary  d-none" id="snackbar">
-              L'attestation est téléchargée sur votre appareil.
-            </div>
-        </form>
+        <p class="text-center mt-1">
+            <button type="button" id="cleardata" class="btn  btn-primary  btn-clear-data">
+                <span>
+                <i class="fa fa-trash inline-block mr-1"></i>
+                Effacer le formulaire et son
+                contenu sauvegardé sur mon téléphone
+                </span>
+            </button>
+        </p>
+        <div class="bg-primary  d-none"
+            id="snackbar-cleardata">
+            Les données du formulaire et les données sauvegardées ont été effacées.
+        </div>
     </div>
 
     <div class="">
@@ -357,6 +107,9 @@
                 [1] Les  personnes  souhaitant  bénéficier  de  l'une  de  ces  exceptions  doivent  se  munir  s'il  y  a  lieu,  lors  de  leurs déplacements hors de leur domicile, d'un document leur permettant de justifier que le déplacement considéré entre dans le champ de l'une de ces exceptions.
             </span><br>
         </p>
+        <p class="label-mi">Pour lutter contre l’épidémie, l’application TousAntiCovid est disponible sur :</p>
+        <a target="_blank" href="https://itunes.apple.com/app/id1511279125"><img style="height: 50pt; margin-bottom: 5px;" class="center" src="/appstore-badge.png" alt="logo appstore"></a>
+        <a target="_blank" href="https://play.google.com/store/apps/details?id=fr.gouv.android.stopcovid"><img style="height: 48pt; margin-bottom: 15px;" class="center" src="/google-play-badge.png" alt="logo playstore"></a>
         <p class="github">
             Le code source de ce service est consultable sur <a href="https://github.com/LAB-MI/attestation-couvre-feu-covid-19" class="github-link">GitHub</a>.
         </p>

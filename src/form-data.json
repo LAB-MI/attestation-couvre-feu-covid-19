@@ -1,0 +1,139 @@
+[
+  [
+    {
+      "key": "firstname",
+      "type": "text",
+      "contentType": "firstname",
+      "label": "Prénom",
+      "autocomplete": "given-name",
+      "placeholder": "Camille"
+    },
+    {
+      "key": "lastname",
+      "type": "text",
+      "contentType": "lastname",
+      "label": "Nom",
+      "autocomplete": "family-name",
+      "placeholder": "Dupont"
+    },
+    {
+      "key": "birthday",
+      "type": "text",
+      "contentType": "birthday",
+      "label": "Date de naissance",
+      "autocomplete": "birthday",
+      "pattern": "^([0][1-9]|[1-2][0-9]|30|31)\/([0][1-9]|10|11|12)\/(19[0-9][0-9]|20[0-1][0-9]|2020)",
+      "maxlength": 10,
+      "placeholder": "01/01/1970"
+    }
+  ],
+  [
+    {
+      "key": "placeofbirth",
+      "type": "text",
+      "contentType": "cityofbirth",
+      "label": "Lieu de naissance",
+      "autocomplete": "off",
+      "placeholder": "Paris"
+    },
+    {
+      "key": "address",
+      "type": "text",
+      "contentType": "address",
+      "label": "Adresse",
+      "autocomplete": "address-line1",
+      "placeholder": "999 avenue de France"
+    },
+    {
+      "key": "city",
+      "type": "text",
+      "contentType": "city",
+      "label": "Ville",
+      "autocomplete": "address-level2",
+      "placeholder": "Paris"
+    },
+    {
+      "key": "zipcode",
+      "type": "number",
+      "contentType": "zipcode",
+      "label": "Code Postal",
+      "autocomplete": "postal-code",
+      "placeholder": "75001",
+      "inputmode": "numeric",
+      "pattern": "[0-9]{5}",
+      "min": 1000,
+      "max": 99999,
+      "minlength":4,
+      "maxlength":5
+    }
+  ],
+  [
+    {
+      "key": "creationDate",
+      "type": "date",
+      "contentType": "creationDate",
+      "label": "Date de création",
+      "isHidden": true
+    },
+    {
+      "key": "creationHour",
+      "type": "time",
+      "contentType": "creationHour",
+      "label": "Heure de création",
+      "isHidden": true
+    },
+    {
+      "key": "datesortie",
+      "type": "date",
+      "contentType": "datesortie",
+      "label": "Date de sortie",
+      "pattern": "^([0][1-9]|[1-2][0-9]|30|31)\/([0][1-9]|10|11|12)\/(19[0-9][0-9]|20[0-1][0-9]|2020)",
+      "autocomplete": ""
+    },
+    {
+      "key": "heuresortie",
+      "type": "time",
+      "contentType": "heuresortie",
+      "label": "Heure de sortie",
+      "autocomplete": ""
+    },
+    {
+      "key": "reason",
+      "type": "list",
+      "items": [
+        {
+          "code": "travail",
+          "label": "Déplacements entre le domicile et le lieu d'exercice de l'activité professionnelle ou le lieu d'enseignement et de formation, déplacements professionnels ne pouvant être différés ;"
+        },
+        {
+          "code": "sante",
+          "label": "Déplacements pour des consultations et soins ne pouvant être assurés à distance et ne pouvant être différés ou pour l'achat de produits de santé ;"
+        },
+        {
+          "code": "famille",
+          "label": "Déplacements pour motif familial impérieux, pour l'assistance aux personnes vulnérables ou précaires ou pour la garde d'enfants ;"
+        },
+        {
+          "code": "handicap",
+          "label": "Déplacements des personnes en situation de handicap et de leur accompagnant ;"
+        },
+        {
+          "code": "convocation",
+          "label": "Déplacements pour répondre à une convocation judiciaire ou administrative ;"
+        },
+        {
+          "code": "missions",
+          "label": "Déplacements pour participer à des missions d'intérêt général sur demande de l'autorité administrative ;"
+        },
+        {
+          "code": "transits",
+          "label": "Déplacements liés à des transits ferroviaires ou aériens pour des déplacements de longues distances ;"
+        },
+        {
+          "code": "animaux",
+          "label": "Déplacements brefs, dans un rayon maximal d'un kilomètre autour du domicile pour les besoins des animaux de compagnie."
+        }
+      ]
+    }
+  ]
+]
