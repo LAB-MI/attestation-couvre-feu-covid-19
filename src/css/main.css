@@ -254,6 +254,7 @@ input:valid+span:after {
 
 .logo {
   width: 50%;
+  min-width: 240px;
 }
 
 .covid-title {
