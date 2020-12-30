@@ -279,7 +279,7 @@ input:valid+span:after {
 }
 
 .covid-subtitle {
-  display: inline-block;
+  display: flex;
   align-items: center;
   font-size: 0.40em;
   padding: 0.3em;
