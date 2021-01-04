@@ -1,6 +1,6 @@
 {
   "name": "attestation-couvre-feu",
-  "version": "1.1.1",
+  "version": "1.1.3",
   "description": "Générateur d'attestation de déplacement dérogatoire'",
   "main": "certificate.js",
   "scripts": {
@@ -17,6 +17,8 @@
     "prebuild:ci": "run-p lint clean:dist",
     "build:ci": "cross-env npm run build:simple",
     "postbuild:ci": "cross-env-shell react-snap",
+    "build:prod": "cross-env PUBLIC_URL='/attestation-couvre-feu-covid-19' npm run build:simple",
+    "build:test": "cross-env PUBLIC_URL='/euqiremun' npm run build:simple",
     "build:dev": "cross-env PUBLIC_URL='/' npm run build:simple",
     "preserve": "npm run build",
     "serve": "serve dist",
@@ -24,13 +26,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lab-mi/attestation-couvre-feu-covid-19"
+    "url": "git+https://github.com/lab-mi/attestation-couvre-feu-prive"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lab-mi/attestation-couvre-feu-covid-19/issues"
+    "url": "https://github.com/lab-mi/attestation-couvre-feu-prive/issues"
   },
   "devDependencies": {
     "@babel/core": "^7.12.0",

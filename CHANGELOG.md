@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.3] Adaptation mention horaire couvre-feu
+
+- Modification du pdf (certificate.pdf)
+- Modification du titre du formulaire
+
 ## [1.1.1]  Adaptation de l'attestation aux nouvelles dispositions en vigueur à partir du 15/12/2020
 
 - Modification du pdf (certificate.pdf)
