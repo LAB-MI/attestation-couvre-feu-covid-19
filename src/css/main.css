@@ -631,6 +631,30 @@ input:valid+span:after {
   border-color: #030494;
 }
 
+a.btn-link, 
+a.btn-link:hover,
+a.btn-link:focus,
+a.btn-link:focus-within,
+a.btn-link:visited {
+  color: #fff;
+  background-color: #990002;
+  border-color: #990002;
+  text-decoration: none;
+}
+
+a.btn-link:hover {
+  background-color: #6E0002;
+  border-color: #6E0002;
+}
+
+.icon-curfew-map {
+  padding: 0 0.8em 0 0;
+}
+
+.icon-open-in-new {
+  padding: 0 0 0.8em 0.8em;
+}
+
 .fieldset {
   margin-left: -2em;
   margin-right: -2em;
@@ -646,3 +670,4 @@ input:valid+span:after {
 .fieldset-error {
   border: 3px solid red;
 }
+

@@ -127,7 +127,7 @@
         },
         {
           "code": "transits",
-          "label": "Déplacements liés à des transits ferroviaires ou aériens pour des déplacements de longues distances ;"
+          "label": "Déplacements liés à des transits ferroviaires, aériens ou en bus pour des déplacements de longues distances ;"
         },
         {
           "code": "animaux",
