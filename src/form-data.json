@@ -107,7 +107,7 @@
         },
         {
           "code": "sante",
-          "label": "Déplacements pour des consultations et soins ne pouvant être assurés à distance et ne pouvant être différés ou pour l'achat de produits de santé ;"
+          "label": "Déplacements pour des consultations, examens, actes de prévention (dont vaccination) et soins ne pouvant être assurés à distance et ne pouvant être différés ou pour l’achat de produits de santé ;"
         },
         {
           "code": "famille",

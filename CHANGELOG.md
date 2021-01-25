@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.5] Mise à jour motif santé
+
+- Mise à jour motif santé
+- Déplacement des exemples (amélioration UX saisie formulaire)
+- Retrait du lien vers la carte interactive des horaires du couvre-feu par département
+
 ## [1.1.4] Lien vers carte horaires couvre-feu
 
 - Mise à jour du motif transit

@@ -3,13 +3,13 @@ import { PDFDocument, rgb, StandardFonts } from 'pdf-lib'
 
 const ys = {
   travail: 540,
-  sante: 508,
-  famille: 474,
-  handicap: 441,
-  convocation: 418,
-  missions: 397,
-  transits: 363,
-  animaux: 330,
+  sante: 507,
+  famille: 461,
+  handicap: 429,
+  convocation: 408,
+  missions: 386,
+  transits: 352,
+  animaux: 319,
 }
 
 export async function generatePdf (profile, reasons, pdfBase) {
@@ -90,9 +90,9 @@ export async function generatePdf (profile, reasons, pdfBase) {
     locationSize = 7
   }
 
-  drawText(profile.city, 105, 286, locationSize)
-  drawText(`${profile.datesortie}`, 91, 267, 11)
-  drawText(`${profile.heuresortie}`, 312, 267, 11)
+  drawText(profile.city, 105, 274, locationSize)
+  drawText(`${profile.datesortie}`, 91, 255, 11)
+  drawText(`${profile.heuresortie}`, 312, 255, 11)
 
   // const shortCreationDate = `${creationDate.split('/')[0]}/${
   //   creationDate.split('/')[1]

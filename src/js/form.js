@@ -65,11 +65,11 @@ const createFormGroup = ({
   const appendToFormGroup = appendTo(formGroup)
   appendToFormGroup(labelEl)
   appendToFormGroup(inputGroup)
+  appendToFormGroup(example)
 
   const appendToInputGroup = appendTo(inputGroup)
   appendToInputGroup(input)
   appendToInputGroup(validity)
-  appendToInputGroup(example)
 
   return formGroup
 }
