@@ -17,7 +17,9 @@ const conditions = {
     length: 1,
   },
   '#field-birthday': {
-    pattern: /^([0][1-9]|[1-2][0-9]|30|31)\/([0][1-9]|10|11|12)\/(19[0-9][0-9]|20[0-1][0-9]|2020)/g,
+    // XXX: si l'épidémie est encore là en 2022, changer 2021 en 2022.
+    // Doit aussi être changé dans form-data.json
+    pattern: /^([0][1-9]|[1-2][0-9]|30|31)\/([0][1-9]|10|11|12)\/(2021)/g,
   },
   '#field-placeofbirth': {
     length: 1,
@@ -47,9 +49,23 @@ function validateAriaFields () {
       const length = fieldData.length
       const isInvalidPattern = pattern && !$(field).value.match(pattern)
       const isInvalidLength = length && !$(field).value.length
+      let isInvalidSpecific = false;
 
-      const isInvalid = !!(isInvalidPattern || isInvalidLength)
+      // Comportement spécial: datesortie
+      if(field == "datesortie") {
+        let date = $(field).value.split("/");
+        let now = new Date();
+        now = [now.getDate(), now.getMonth(), now.getFullYear()];
+        for(let i in now) {
+          if(parseInt(date[i]) < now[i]) {
+            isInvalidSpecific = true;
+            break;
+          }
+        }
+      }
 
+      const isInvalid = (isInvalidPattern || isInvalidLength || isInvalidSpecific)
+      
       $(field).setAttribute('aria-invalid', isInvalid)
       if (isInvalid) {
         $(field).focus()

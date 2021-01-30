@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.6] Correctifs divers
+
+- Avec <3 par Kacy Luzzardi
+- FIX: Le générateur accepte 2021 comme année de sortie
+- Le générateur refusera les dates de sorties précedant le jour actuel
+
 ## [1.1.5] Mise à jour motif santé
 
 - Mise à jour motif santé
